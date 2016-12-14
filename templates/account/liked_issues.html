@@ -1,0 +1,13 @@
+{% extends 'account/account.html' %}
+
+{% block title %}
+    <title>BP | Liked issues</title>
+{% endblock %}
+
+{% block content %}
+
+    {% for foo in likedissues %}
+    <div>{{ foo.idissue }}</div>
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'home.html' %}
+
+{% block title %}
+<title>BP | Log in</title>
+{% endblock %}
+
+{% block content %}
+    <form action="/login/" method="post">
+        {% csrf_token %}
+        <div class="col-xs-4"></div>
+        <div class="col-xs-4">
+            <label for="username">Имя пользователя</label>
+            <input type="text" class="form-control" id="username" placeholder="имя пользователя" name="username">
+            <span>{{ form.username.errors }}</span>
+            <br>
+            <label for="password">Пароль</label>
+            <input type="password" class="form-control" id="password" placeholder="введите пароль" name="password">
+            <span>{{ form.password.errors }}</span>
+            {% if login.errors %}
+                <label class="error">{{ login.errors }}</label>
+            {% endif %}
+            <br>
+            <input class="btn btn-primary btn-sm" type="submit" value="Войти" />
+            <a class="btn btn-primary btn-sm" href="/register/" role="button">Регистрация?</a>
+            <a href="{% url 'password_reset' %}"><button class="btn btn-danger btn-sm" type="button" aria-haspopup="false">Забыли пароль?</button></a>
+        </div>
+    </form>
+{% endblock %}

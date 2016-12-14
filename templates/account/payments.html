@@ -1,0 +1,23 @@
+{% extends 'account/account.html' %}
+
+{% block title %}
+    <title>BP | Payments</title>
+{% endblock %}
+
+{% block content %}
+
+    <div class="col-sm-6 table-responsive">
+        <table class="table table-bordered">
+            <tr class="active">
+                <th>Номер выпуска</th>
+                <th>Сумма платежа</th>
+                <th>Дата платежа</th>
+            </tr>
+
+            {% for payedissue in payedissues %}
+                <tr><td>{{ payedissue.idissue }}</td><td>{{ payedissue.amount }}</td><td>{{ payedissue.date }}</td></tr>
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}

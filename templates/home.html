@@ -1,0 +1,95 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+
+    {% block title %}
+        <title>BP | Home</title>
+    {% endblock %}
+
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/datepicker.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/styles.css" %}">
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-left">
+                <a href="/"><img src="/static/images/Лого3.png" width="65"></a>
+                &nbsp;
+                &nbsp;
+                <a class="btn btn-default navbar-btn" href="/catalog/">Каталог</a>
+            </div>
+            <div class="navbar-right">
+                <a class="btn btn-default navbar-btn" href="/">На главную</a>
+                    {% if user.is_authenticated %}
+                        <a class="btn btn-default navbar-btn" href="/account/">Профиль</a>
+                        <a class="btn btn-default navbar-btn" href="/logout/">Выйти <span class="badge">{{ user }}</span></a>
+                        {% if user.username == 'admin' %}
+                            <a class="btn btn-default navbar-btn" href="/admin/">Админка</a>
+                        {% endif %}
+                        &nbsp;
+                    {% else %}
+                        <a class="btn btn-default navbar-btn" href="/login/">Войти</a>
+                        <a class="btn btn-default navbar-btn" href="/register/">Регистрация</a>
+                        &nbsp;
+                    {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    {% block panel %}{% endblock %}
+
+    {% block content %}
+        <div class="col-md-2"></div>
+        <div class="col-md-8" align="center">
+            {% for indexlevel2, news_list in indexlevel2s_list.items %}
+                <div>
+                    <div class="well well-sm header">{{ indexlevel2.indexlevel2ru }}</div>
+                    <div class="column">
+                        <div class="new2">
+                            <a href="{% url "news" idnews=news_list.news1.id %}" ><h3>{{ news_list.news1.header }}</h3></a>
+                            {% autoescape off %}
+                                <p>{{ news_list.news1.body }}</p>
+                            {% endautoescape %}
+                        </div>
+                        <div class="new2">
+                            <a href="{% url "news" idnews=news_list.news2.id %}" ><h3>{{ news_list.news2.header }}</h3></a>
+                            {% autoescape off %}
+                                <p>{{ news_list.news2.body }}</p>
+                            {% endautoescape %}
+                        <br>
+                        </div>
+                    </div>
+                    <div class="column new3">
+                        <img src="{{ news_list.news3.image.url }}" width="140px">
+                        <a href="{% url "news" idnews=news_list.news3.id %}" ><h2>{{ news_list.news3.header }}</h2></a>
+                        {% autoescape off %}
+                            <p>{{ news_list.news3.body }}</p>
+                        {% endautoescape %}
+                    </div>
+                    <div class="column new4">
+                        <a href="{% url "news" idnews=news_list.news4.id %}" ><h2>{{ news_list.news4.header }}</h2></a>
+                        <img src="{{ news_list.news4.image.url }}" width="390px" style="padding-top: 10px;">
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endblock %}
+
+    <script src="{% static "js/jquery-3.1.1.js" %}"></script>
+    <script src="{% static "js/bootstrap-datepicker.js" %}"></script>
+    <script>
+        $(function () {
+            $('.datepicker').datepicker({
+                format: 'yyyy-mm-dd',
+                weekStart: 1,
+            });
+        })
+    </script>
+
+</body>
+</html>

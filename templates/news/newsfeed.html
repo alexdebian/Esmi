@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ h1.indexlevel2en }}</title>
+</head>
+<body>
+<h1>{{ h1.indexlevel2ru }}</h1>
+
+<div>
+    {% for news in news_list %}
+        <div><a href="news/{{ news.id }}"><h2> {{ news.header }}</h2></a></div></br>
+    {% endfor %}
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% extends 'home.html' %}
+
+{% block title %}
+    <title>BP | Каталог</title>
+{% endblock %}
+
+{% block content %}
+    <div class="col-sm-12">
+        <h1 align="center">Каталог</h1>
+        {% for etype, data in etype_list.items %}
+            <div class="col-sm-12">
+                <a href="{{ etype.editiontype_en }}"><h2>{{ etype.editiontype_ru }}</h2></a>
+                {% for topic, jornal in data.items %}
+                    <div class="col-sm-2" style="align-items: center">
+                        <a href="{{ etype.editiontype_en }}/{{ topic.indexlevel2en }}">
+                            <img src="{{ jornal.previewissue.url }}" width="225px" height="318 px">
+                        </a>
+                    <p style="font-size: 2em; padding-top: 2px">{{ topic }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

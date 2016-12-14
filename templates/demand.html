@@ -1,0 +1,14 @@
+{% extends 'home.html' %}
+
+{% block title %}
+<title xmlns="http://www.w3.org/1999/html">BP | Требование</title>
+{% endblock %}
+
+
+{% block content %}
+    <div class="col-sm-4">
+        <h1>Внимание!</h1>
+        <p><h3><a href="{% url 'login' %}">Авторизуйтесь</a> или пройдите <a href="{%  url 'register' %}">регистрацию</a></h3></p>
+        <p><h3>Вернуться <a href="{% url 'issue' etype=etype.editiontype_en ename=ename.editionname_url issue=issue %}">назад</a></h3><p>
+    </div>
+{% endblock %}

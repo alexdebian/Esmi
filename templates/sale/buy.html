@@ -1,0 +1,20 @@
+{% extends 'home.html' %}
+
+{% block title %}
+<title>BP | Купить</title>
+{% endblock %}
+
+{% block content %}
+    <div style="padding-left: 50px">
+        <h1>Оплатить</h1>
+        <br>
+        <span style="font-size: 240%">{{ etype.editiontype_ru }}:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 180%">{{ ename.editionname_ru }}</span>
+        <br>
+        <span style="font-size: 240%">Выпуск:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 180%">{{ current_issue }}</span>
+        <br>
+        <span style="font-size: 240%">Стоимость:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 180%">{{ issue_price.price }} руб.</span>
+        <br>
+        <br>
+        <p><a class="btn btn-primary btn-lg" href="{% url 'success' etype=etype.editiontype_en ename=ename.editionname_url issue=current_issue.throughnumber %}">Оплатить</a></p>
+    </div>
+{% endblock %}

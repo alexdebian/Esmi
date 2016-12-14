@@ -1,0 +1,40 @@
+{% extends 'home.html' %}
+
+{% block title %}
+<title>BP | {{ ename.editionname_ru }}</title>
+{% endblock %}
+
+{% block content %}
+    <div style="margin: 50px">
+        <h1>{{ ename.editionname_ru }}</h1>
+        <div style="float: left; padding-right: 20px">
+            {% if cheek_user  %}
+                <a href="{{ current_issue.fileprivate.url }}">
+            {% else %}
+                <a href="{{ current_issue.filefree.url }}">
+            {% endif %}
+            <img src="{{ current_issue.previewissue.url }}" width="225px" height="318px">
+            </a>
+        </div>
+        <div>
+            <p><span style="font-size: 240%">Издание:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 180%">{{ current_issue }}</span></p>
+            <p><span style="font-size: 240%">Стоимость:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 180%">{{ issue_price.price }} руб.</span></p>
+            {% if cheek_user  %}
+                <br>
+                <h2>Уже оплачено</h2>
+            {% else %}
+                <br>
+                <a class="btn btn-primary btn-lg" href="{% url 'buy' etype=etype.editiontype_en ename=ename.editionname_url issue=current_issue.throughnumber %}">Купить</a>
+            {% endif %}
+        </div>
+        <div style="clear: both; padding-top: 40px">
+            {% for issue in issues %}
+                <div style="float: left; padding-left: 10px; padding-bottom: 10px">
+                    <a href="{% url 'issue' etype=etype.editiontype_en ename=ename.editionname_url issue=issue.throughnumber %}">
+                        <img src="{{ issue.previewissue.url }}" width="150px"></a>
+                    <p style="text-align: center;">№{{ issue.number }} ({{ issue.throughnumber }}) </br> {{ issue.dateissues }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

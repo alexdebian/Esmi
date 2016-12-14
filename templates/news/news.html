@@ -1,0 +1,32 @@
+{% extends 'home.html' %}
+
+{% block title %}
+<title xmlns="http://www.w3.org/1999/html">BP | {{ news.header }}</title>
+{% endblock %}
+
+</head>
+{% block content %}
+<body>
+     <div id="content" style="padding-left: 20px; padding-right: 20px;">
+        <h1 style="color: #1d1d1b;">{{ news.header }}</h1></br>
+        <img src="{{ news.picture.url }}" style="text-align: center; width:500px; padding-bottom: 20px;">
+     {% autoescape off %}
+        <div><strong>{{ news.description }}</strong></div> </br>
+        <div>{{ news.body_free }}</div>
+        <div style="padding-top: 20px; text-align: right;">{{ author.author }}</div>
+        <div style="text-align: right;"><a href="{% url 'issue' etype=etype.editiontype_en ename=ename.editionname_url issue=issue_id %}">{{ issue }}</a></div>
+     {% endautoescape %}
+         <div>
+             <h2>Читать также:</h2>
+            {% for snew in same_news %}
+                <div style="float: left; padding: 10px 10px 10px 10px; width:300px;">
+                    <img src="{{ snew.picture.url }}" style="text-align: center; height: 200px; padding-bottom: 20px;">
+                    <a href="{% url 'news' idnews=snew.id %}"> <h4>{{ snew.header }}</h4></a>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+{% endblock %}
+</body>
+</html>

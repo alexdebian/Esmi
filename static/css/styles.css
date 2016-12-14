@@ -1,0 +1,82 @@
+.asteriskField{color: red;}
+.header{background-color: whitesmoke; font-size: 160%; color: black}
+.body{
+    font: 14px/16px Arial;
+    color: #616161;
+    background-color: #F5EFEB;
+    padding: 0;
+    margin: 0;
+    }
+.welcom{
+    background-color: #000;
+    color: #fff;
+    font-weight: bold;
+    padding: 15px;
+}
+.logo{
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid #000;
+    margin-bottom: 5px;
+    background-color: #fff;
+}
+#content{
+    width: 90%;
+    max-width: 1040px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+.section{
+    color: #fff;
+    font-weight: bold;
+    padding: 15px;
+}
+.h2{
+    color: #1d1d1b;
+    font-size: 32px;
+    line-height: 32px;
+}
+.p{
+    color: #696969;
+}
+.new1{
+    background: no-repeat 100% 15px;
+    padding-right: 500px;
+    width: 325px;
+    margin: 0 15px;
+}
+.new2{
+    width: 400px;
+    margin: 0 5px 0 15px;
+    padding-right: 15px;
+    border-bottom: 1px solid #dbdbdb;
+}
+.new3{
+    background: no-repeat 15px 0;
+    width: 270px;
+    margin-top: 15px;
+    padding: 10px 15px 0 15px;
+    border-left: 1px solid #dbdbdb;
+    border-right: 1px solid #dbdbdb;
+}
+.new3 h2,
+.new5 h2{
+    font-size: 21px;
+    line-height: 21px;
+}
+.column{
+    display: inline-block;
+    vertical-align: top;
+}
+.new4{
+    background: no-repeat 15px 100%;
+    width: 400px;
+    padding: 10px;
+}
+.new5{
+    background: url(4.png)no-repeat 15px 0;
+    width: 140px;
+    padding: 100px 15px 0 15px;
+    border-left: 1px solid #dbdbdb;
+    margin: 15px 0;
+}

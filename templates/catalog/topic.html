@@ -1,0 +1,17 @@
+{%  extends 'home.html' %}
+
+{% block title %}
+    <title>{{ indexlevel2.indexlevel2ru }}</title>
+{% endblock %}
+
+{% block content %}
+    <h1 align="center">{{ indexlevel2.indexlevel2ru }}</h1>
+        {% for ename, issue in enames.items %}
+            <div class="col-sm-1" align="center">
+                <a href="{% url 'issue' etype=etype.editiontype_en ename=ename.editionname_url issue=issue.throughnumber %}">
+                    <img src="{{ issue.previewissue.url }}" width="150px" >
+                </a>
+                <p align="center">{{ ename.editionname_ru }}<br>{{ issue.dateissues }} </p>
+            </div>
+        {% endfor %}
+{% endblock %}

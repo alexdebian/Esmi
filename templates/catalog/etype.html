@@ -1,0 +1,22 @@
+{% extends 'home.html' %}
+
+{% block title %}
+<title>BP | {{ etype.editiontype_ru }}</title>
+{% endblock %}
+
+{% block content %}
+<body>
+    <div style="margin: 50px">
+        <h1>{{ etype.editiontype_ru }}</h1>
+        <div>
+        {% for topic, issue in data.items %}
+            <div style="float:left; margin-left:15px; align-content: center; text-align:center;">
+                <a href=" {% url 'topic' etype=etype.editiontype_en param1=topic.indexlevel2en %}">
+                    <img src="{{ issue.previewissue.url }}" width="225px" height="318px">
+                </a>
+                <p style="font-size: 2em"> {{ topic.indexlevel2ru }} </p>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}
